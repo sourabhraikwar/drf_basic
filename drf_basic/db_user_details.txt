@@ -1,0 +1,6 @@
+db.createUser( { user: "drf_user",
+                 pwd: passwordPrompt(), 
+                 roles: [ { role: "clusterAdmin", db: "admin" },
+                          { role: "readAnyDatabase", db: "admin" },
+                          "readWrite"] },
+               { w: "majority" , wtimeout: 5000 } )
