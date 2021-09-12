@@ -1,20 +1,9 @@
 from django.contrib.auth import authenticate
 from rest_framework import serializers
-
 from django.contrib.auth import get_user_model
+from django.core.mail import send_mail
 
 User = get_user_model()
-
-
-def get_and_authenticate_user(username, password):
-    user_qs = User.objects.filter(username=username)
-    user_exists = user_qs.last().check_password(password) if user_qs.exists() else False
-    if not user_exists:
-        raise serializers.ValidationError(
-            "Invalid username/password. Please try again!"
-        )
-    return user_qs
-
 
 def create_user_account(
     username, email, password, first_name="", last_name="", **extra_fields
@@ -28,3 +17,13 @@ def create_user_account(
         **extra_fields
     )
     return user
+
+
+def send_email(message: str, receivers: list):
+    send_mail(
+        'Email Verification',
+        message,
+        settings.EMAIL_HOST,
+        receivers,
+        fail_silently=False,
+    )

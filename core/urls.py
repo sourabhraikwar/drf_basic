@@ -1,3 +1,7 @@
-from django.urls import path, include
+from django.urls import path
+from auth.views import UpdateProfileView
 
-urlpatterns = []
+
+urlpatterns = [
+    path('update_profile/<int:pk>/', UpdateProfileView.as_view(), name='auth_update_profile'),
+]
