@@ -1,5 +1,5 @@
 from django.urls import path
-from auth.views import UpdateProfileView
+from core.views import UpdateProfileView
 
 
 urlpatterns = [
