@@ -29,7 +29,7 @@ router_urls = router.urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("core/", include("core.urls")),
+    path("api/core/", include("core.urls")),
     path("api/auth/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/auth/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ] + router_urls
