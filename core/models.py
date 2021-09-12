@@ -14,7 +14,9 @@ class UserManager(BaseUserManager):
         if not email:
             raise ValueError(_('The Email must be set'))
         email = self.normalize_email(email)
+        username = extra_fields.get('username', None)
         user = self.model(email=email, **extra_fields)
+        user.username = username if username else email.split('@')[0]
         user.set_password(password)
         user.save()
         return user
@@ -40,6 +42,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class User(AbstractUser):
+    username = models.CharField(_('username'), max_length=255, unique=True)
     email = models.EmailField(_('email address'), unique=True)
     is_email_verified = models.BooleanField(default=False)
 
