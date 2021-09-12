@@ -1,9 +1,7 @@
-Jason Das
+Sep 10, 2021, 3:49 PM 
 	
-Sep 10, 2021, 3:49 PM (18 hours ago)
-	
-to me
 User authentication system using Django rest framework. 
+==========================================================
 
 Required APIs
 1. User field Username, email, password
@@ -11,31 +9,4 @@ Required APIs
 3. User create,user login, and user update ,
 4. Make sure using a nosql database like mongoDB
 5. Protected reuter is required in home screen API also all these api make sure tested.
-Please complete the task and submit it to me by tomorrow evening.
-
-Thanks & Regards.
-
----------------------------------------
-- Setuped django project and connected it with mongodb
-
-- Created APIs
-	-- Registration,
-	-- Login, 
-	-- Logout, 
-	-- Password Change, 
-	-- Update user details, 
-	-- List user
-	-- Retrive user
-	-- Delete user
-
-- Remaining APIs
-	-- Email verification
-	-- Forget Password
-
-Thats all from my side. 
-
-
-thanks and regards 
-Sourabh Raikwar
-
 
