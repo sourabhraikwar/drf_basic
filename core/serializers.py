@@ -1,38 +1,27 @@
-
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth import get_user_model, password_validation
 from .utils import create_user_account
 from django.contrib.auth import get_user_model
+
 User = get_user_model()
-
-# Serializers define the API representation.
-class UserSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password']
-        extra_kwargs = {"password": {"write_only": True}}
-
-
-
-class UserLoginSerializer(serializers.Serializer):
-    username = serializers.CharField(max_length=300, required=True)
-    password = serializers.CharField(required=True, write_only=True)
 
 
 class AuthUserSerializer(serializers.ModelSerializer):
-    auth_token = serializers.SerializerMethodField()
-
     class Meta:
-         model = User
-         fields = ('id', 'email', 'first_name', 'last_name', 'is_active', 'is_staff', 'auth_token')
-         read_only_fields = ('id', 'is_active', 'is_staff')
-    
-    def get_auth_token(self, obj):
-        token, _ = Token.objects.get_or_create(user=obj.last())
-        return token.key
+        model = User
+        fields = (
+            "id",
+            "email",
+            "first_name",
+            "last_name",
+            "is_active",
+        )
+        read_only_fields = (
+            "id",
+            "is_active",
+        )
 
 
 class EmptySerializer(serializers.Serializer):
@@ -46,7 +35,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password', 'first_name', 'last_name')
+        fields = ("id", "username", "email", "password", "first_name", "last_name")
 
     def validate_email(self, value):
         user = User.objects.filter(email=value)
@@ -64,8 +53,8 @@ class PasswordChangeSerializer(serializers.Serializer):
     new_password = serializers.CharField(required=True)
 
     def validate_current_password(self, value):
-        if not self.context['request'].user.check_password(value):
-            raise serializers.ValidationError('Current password does not match')
+        if not self.context["request"].user.check_password(value):
+            raise serializers.ValidationError("Current password does not match")
         return value
 
     def validate_new_password(self, value):
@@ -76,5 +65,10 @@ class PasswordChangeSerializer(serializers.Serializer):
 class ListUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password', 'first_name', 'last_name')
+        fields = ("id", "username", "email", "first_name", "last_name")
 
+
+class RetrieveUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("id", "username", "email", "first_name", "last_name")

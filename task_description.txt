@@ -15,4 +15,27 @@ Please complete the task and submit it to me by tomorrow evening.
 
 Thanks & Regards.
 
+---------------------------------------
+- Setuped django project and connected it with mongodb
+
+- Created APIs
+	-- Registration,
+	-- Login, 
+	-- Logout, 
+	-- Password Change, 
+	-- Update user details, 
+	-- List user
+	-- Retrive user
+	-- Delete user
+
+- Remaining APIs
+	-- Email verification
+	-- Forget Password
+
+Thats all from my side. 
+
+
+thanks and regards 
+Sourabh Raikwar
+
 
