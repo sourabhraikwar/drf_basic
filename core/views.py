@@ -109,14 +109,18 @@ class AuthViewSet(viewsets.GenericViewSet):
         serializer = self.get_serializer(request.data)
         serializer.is_valid(raise_exception=True)
         serializer.send_email(self.request)
-        data = {"success": "Verification code sent in your registered email id please verifiy"}
+        data = {
+            "success": "Verification code sent in your registered email id please verifiy"
+        }
         return Response(data=data, status=status.HTTP_200_OK)
 
     def verify_email(self, request):
         serializer = self.get_serializer(request.data)
         serializer.is_valid(raise_exception=True)
         serializer.send_email(self.request)
-        data = {"success": "Verification code sent in your registered email id please verifiy"}
+        data = {
+            "success": "Verification code sent in your registered email id please verifiy"
+        }
         return Response(data=data, status=status.HTTP_200_OK)
 
     def get_serializer_class(self):

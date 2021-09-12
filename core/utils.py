@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 
 User = get_user_model()
 
+
 def create_user_account(
     username, email, password, first_name="", last_name="", **extra_fields
 ):
@@ -21,7 +22,7 @@ def create_user_account(
 
 def send_email(message: str, receivers: list):
     send_mail(
-        'Email Verification',
+        "Email Verification",
         message,
         settings.EMAIL_HOST,
         receivers,
